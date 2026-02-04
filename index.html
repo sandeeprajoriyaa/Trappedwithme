@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Meter</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.25);
+    width:330px;
+    text-align:center;
+}
+
+h2{ color:#ff4d6d; }
+
+.meter-box{
+    margin:20px 0;
+    background:#eee;
+    border-radius:20px;
+    overflow:hidden;
+    height:25px;
+}
+
+.meter{
+    height:100%;
+    width:0%;
+    background:#ff4d6d;
+    transition:0.4s;
+}
+
+.percent{
+    margin-top:10px;
+    font-weight:bold;
+    color:#ff4d6d;
+}
+
+button{
+    padding:12px 22px;
+    margin:10px;
+    border:none;
+    border-radius:25px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.yes{
+    background:#ff4d6d;
+    color:white;
+}
+
+.no{
+    background:#ddd;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="page1">
+    <h2>💘 Will you be my Valentine? 💘</h2>
+
+    <div class="meter-box">
+        <div class="meter" id="meter"></div>
+    </div>
+
+    <div class="percent" id="percentText">Chance = 0%</div>
+
+    <button class="yes" onclick="yesClick()">Yes 💖</button>
+    <button class="no" onclick="noClick()">No 🙈</button>
+</div>
+
+<div class="card" id="page2" style="display:none;">
+    <h2>😌 I knew it!</h2>
+    <p>
+        <b>Chance = 100% 💯</b><br><br>
+        Congratulations 🎉💖<br><br>
+        Tum meri Valentine ho —  
+        ye meter pehle se hi jaanta tha 😉<br><br>
+        Happy Valentine’s Day ❤️🌹
+    </p>
+</div>
+
+<script>
+let chance = 0;
+
+function noClick(){
+    if(chance < 90){
+        chance += 10;
+    }
+    document.getElementById("meter").style.width = chance + "%";
+    document.getElementById("percentText").innerText = "Chance = " + chance + "%";
+}
+
+function yesClick(){
+    document.getElementById("page1").style.display="none";
+    document.getElementById("page2").style.display="block";
+}
+</script>
+
+</body>
+</html>
